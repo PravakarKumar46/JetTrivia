@@ -12,10 +12,11 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class QuestionViewModel @Inject constructor(private val repository: QuestionRepository) :
-    ViewModel() {
+class QuestionViewModel @Inject constructor(
+    private val repository: QuestionRepository
+) : ViewModel() {
 
-    private val data: MutableState<DataOrException<ArrayList<QuestionItem>,
+    val data: MutableState<DataOrException<ArrayList<QuestionItem>,
             Boolean, Exception>> = mutableStateOf(
         DataOrException(null, true, Exception(""))
     )
@@ -30,6 +31,10 @@ class QuestionViewModel @Inject constructor(private val repository: QuestionRepo
             data.value = repository.getAllQuestions()
             if (data.value.toString().isNotEmpty()) data.value.loading = false
         }
+    }
+
+    fun getTotalNoOfQuestions(): Int {
+        return data.value.data?.size!!
     }
 
 }
