@@ -1,6 +1,5 @@
 package com.example.jettrivia.component
 
-import android.util.Log
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -16,7 +15,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ButtonDefaults.buttonColors
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.RadioButton
@@ -48,7 +46,6 @@ import androidx.compose.ui.unit.sp
 import com.example.jettrivia.data.QuestionItem
 import com.example.jettrivia.screens.QuestionViewModel
 import com.example.jettrivia.util.AppColors
-import org.w3c.dom.Text
 
 
 @Composable
@@ -61,7 +58,6 @@ fun Questions(viewModel: QuestionViewModel) {
     }
 
     if (viewModel.data.value.loading == true) {
-        Log.d("pppppppp", "Questions: Loading...")
 
         val strokeWidth = 5.dp
         Column(
@@ -212,7 +208,7 @@ fun QuestionDisplay(
                     .padding(3.dp)
                     .align(alignment = Alignment.CenterHorizontally),
                     shape = RoundedCornerShape(34.dp),
-                    colors = ButtonDefaults.buttonColors(
+                    colors = buttonColors(
                         containerColor = AppColors.mLightBlue
                     )
                 ) {
